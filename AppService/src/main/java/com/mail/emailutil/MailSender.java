@@ -1,4 +1,4 @@
-package com.shidian.mail;
+package com.mail.emailutil;
 
 import android.util.Log;
 

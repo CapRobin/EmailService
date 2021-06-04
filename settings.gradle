@@ -1,2 +1,2 @@
-include ':AppService', ':mail'
+include ':AppService'
 rootProject.name='EmailService'

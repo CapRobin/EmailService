@@ -31,7 +31,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation project(':mail')
+//    implementation project(':mail')
     implementation files('libs/commons-io-2.2.jar')
     implementation files('libs/fastjson-1.2.76.jar')
+    implementation files('libs/mail.jar')
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
 }
