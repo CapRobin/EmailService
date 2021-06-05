@@ -8,7 +8,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
 import androidx.core.app.ActivityCompat;
+
 import com.mail.service.MyService;
 
 public class MainActivity extends Activity {
@@ -17,23 +19,26 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         //申请权限
         if (Build.VERSION.SDK_INT >= 23) {
             showContacts();
+        } else {
+
+            //启动Service服務
+            Intent service = new Intent(MainActivity.this, MyService.class);
+            MainActivity.this.startService(service);
         }
 
-        //启动Service服務
-//        Intent service = new Intent(MainActivity.this, MyService.class);
-//        MainActivity.this.startService(service);
-
+        Toast.makeText(this, "系统运行正常，无需监测", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        finish();
+//        finish();
     }
 
     /**

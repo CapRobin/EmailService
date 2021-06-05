@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         package="com.mail.activity">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,6 +11,49 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 开机启动所需权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!--无界面APP参数配置-->
+    <!--    <application-->
+    <!--            android:name="com.mail.utils.MyApplication"-->
+    <!--            android:allowBackup="true"-->
+    <!--            android:icon="@mipmap/ic_launcher"-->
+    <!--            android:label="@string/app_name"-->
+    <!--            android:roundIcon="@mipmap/ic_launcher_round"-->
+    <!--            android:supportsRtl="true"-->
+    <!--            android:theme="@android:style/Theme.NoDisplay">-->
+    <!--        <activity android:name="com.mail.activity.MainActivity">-->
+    <!--            <intent-filter>-->
+    <!--                <action android:name="android.intent.action.MAIN" />-->
+    <!--                &lt;!&ndash;设置该参数项是为了隐藏APP安装完之后桌面显示应用图标，里面参数值都为固定项目&ndash;&gt;-->
+    <!--                <data-->
+    <!--                        android:host="AuthActivity"-->
+    <!--                        android:scheme="com.android.example"-->
+    <!--                        tools:ignore="AppLinkUrlError" />-->
+    <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+    <!--            </intent-filter>-->
+    <!--        </activity>-->
+
+
+    <!--        <activity android:name=".MainActivity">-->
+    <!--            <intent-filter>-->
+    <!--                <action android:name="android.intent.action.MAIN" />-->
+
+    <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+    <!--            </intent-filter>-->
+    <!--        </activity>-->
+
+    <!--        &lt;!&ndash;启动服务&ndash;&gt;-->
+    <!--        <service android:name="com.mail.service.MyService" />-->
+    <!--        &lt;!&ndash; 开机启动 &ndash;&gt;-->
+    <!--        <receiver android:name="com.mail.service.AutoStartReceiver">-->
+    <!--            <intent-filter>-->
+    <!--                <action android:name="android.intent.action.BOOT_COMPLETED"/>-->
+    <!--                <category android:name="android.intent.category.HOME"/>-->
+    <!--            </intent-filter>-->
+    <!--        </receiver>-->
+    <!--    </application>-->
 
     <application
             android:name="com.mail.utils.MyApplication"
@@ -20,20 +62,23 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@android:style/Theme.NoDisplay">
-        <activity android:name="com.mail.activity.MainActivity">
+            android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!--设置该参数项是为了隐藏APP安装完之后桌面显示应用图标，里面参数值都为固定项目-->
-                <data
-                        android:host="AuthActivity"
-                        android:scheme="com.android.example"
-                        tools:ignore="AppLinkUrlError" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!--启动服务-->
         <service android:name="com.mail.service.MyService" />
+        <!-- 开机启动 -->
+        <receiver android:name="com.mail.service.AutoStartReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
