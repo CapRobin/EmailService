@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 
 import com.mail.service.MyService;
+import com.mail.utils.MyApplication;
 
 public class MainActivity extends Activity {
     private static final int BAIDU_READ_PHONE_STATE = 100;
@@ -25,8 +26,8 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= 23) {
             showContacts();
         } else {
-
             //启动Service服務
+            System.out.print("启动服务1----------------------------->>");
             Intent service = new Intent(MainActivity.this, MyService.class);
             MainActivity.this.startService(service);
         }
@@ -90,6 +91,7 @@ public class MainActivity extends Activity {
                     Manifest.permission.CHANGE_WIFI_STATE
             }, BAIDU_READ_PHONE_STATE);
         } else {
+            System.out.print("启动服务2----------------------------->>");
             //启动Service服務
             Intent service = new Intent(MainActivity.this, MyService.class);
             MainActivity.this.startService(service);
@@ -105,13 +107,14 @@ public class MainActivity extends Activity {
             case BAIDU_READ_PHONE_STATE:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 获取到权限，作相应处理（调用定位SDK应当确保相关权限均被授权，否则可能引起定位失败）
-                    Log.d("onRequestPermissionsResult", "获取位置权限成功----------------------------->>");
+                    System.out.print("获取位置权限成功----------------------------->>");
                     //启动Service服務
+                    System.out.print("启动服务3----------------------------->>");
                     Intent service = new Intent(MainActivity.this, MyService.class);
                     MainActivity.this.startService(service);
                 } else {
                     // 没有获取到权限，做特殊处理
-                    Log.d("onRequestPermissionsResult", "获取位置权限失败，请手动开启----------------------------->>");
+                    System.out.print("获取位置权限失败，请手动开启----------------------------->>");
                 }
                 break;
             default:
