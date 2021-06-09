@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
                     Manifest.permission.CHANGE_WIFI_STATE
             }, BAIDU_READ_PHONE_STATE);
         } else {
-            System.out.print("启动服务2----------------------------->>");
+            //System.out.print("启动服务2----------------------------->>");
             //启动Service服務
             Intent service = new Intent(MainActivity.this, MyService.class);
             MainActivity.this.startService(service);
